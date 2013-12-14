@@ -1,0 +1,13 @@
+.notificaciones-app {
+    width: 500px;
+    margin: 0 auto;
+}
+.mensaje { 
+    width: 75%;
+    float: left;
+}
+.foto-alumno {
+    width:100px;
+    margin: 0 10px;
+    float: right;
+}
