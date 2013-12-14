@@ -7,6 +7,7 @@
 
 {% block extra_style %}
     <link href="{% static "css/site.css" %}" rel="stylesheet">
+    <link href="{% static "css/extra.css" %}" rel="stylesheet">
 {% endblock %}
 
 
@@ -18,6 +19,8 @@
 {% block footer %}
     {% include "_footer.html" %}
 {% endblock %}
+
+{% block navbar_class %}{% endblock %}
 
 
 {% block extra_body_base %}

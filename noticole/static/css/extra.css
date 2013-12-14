@@ -1,0 +1,10 @@
+body { background-color: #888; }
+.container { background-color: #fff; }
+.navbar, .container {
+    width: 500px;
+    margin: 0 auto;
+}
+#login-main {
+    background: url(../img/fondo-login.png)
+}
+#login-main form { padding: 0 20px  }
