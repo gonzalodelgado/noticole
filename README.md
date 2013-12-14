@@ -1,21 +1,16 @@
-pinax-project-account
-=====================
+Noti Escuela
+============
 
-a starter project the incorporates account features from django-user-accounts
+Aplicación de notificaciones escolares para padres
 
 
-Usage:
-
-    django-admin.py startproject --template=https://github.com/pinax/pinax-project-account/zipball/master <project_name>
-
-Getting Started:
+Inicio rápido:
 
     pip install virtualenv
-    virtualenv mysiteenv
-    source mysiteenv/bin/activate
-    pip install Django==1.6
-    django-admin.py startproject --template=https://github.com/pinax/pinax-project-account/zipball/master mysite
-    cd mysite
+    virtualenv noticoleenv
+    source noticoleenv/bin/activate
+    git clone git@github.com:gonzalodelgado/noticole.git
+    cd noticole
     pip install -r requirements.txt
     python manage.py syncdb
     python manage.py runserver
