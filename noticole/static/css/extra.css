@@ -1,7 +1,7 @@
 body { background-color: #888; }
 .container { background-color: #fff; }
-.navbar, .container {
-    width: 500px;
+.navbar-default, .container {
+    width: 540px;
     margin: 0 auto;
 }
 #login-main {

@@ -3,7 +3,10 @@
 {% load i18n staticfiles thumbnail %}
 
 {% block head_title %}Notificaciones{% endblock %}
-{% block extra_style %}<link href="{% static "css/noticole.css" %}" rel="stylesheet">{% endblock %}
+{% block extra_style %}
+  {{ block.super }}
+  <link href="{% static "css/noticole.css" %}" rel="stylesheet">
+{% endblock %}
 
 {% block body %}
 <div class="row notificaciones-app">
