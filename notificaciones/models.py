@@ -4,9 +4,8 @@ from django.contrib.auth.models import Group
 
 class Alumno(models.Model):
     usuario = models.OneToOneField(
-        'auth.User', limit_choices_to={'groups': Group.objects.get(name='Alumnos')},
-        null=True, blank=True)
-    padre = models.ForeignKey('auth.User', related_name='hijos', limit_choices_to={'groups': Group.objects.get(name='Padres')})
+        'auth.User') # , limit_choices_to={'groups': Group.objects.get(name='Alumnos')}, null=True, blank=True)
+    padre = models.ForeignKey('auth.User', related_name='hijos') #, limit_choices_to={'groups': Group.objects.get(name='Padres')})
     foto = models.ImageField(upload_to='alumnos', null=True)
 
     def nombre(self):
