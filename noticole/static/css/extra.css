@@ -10,4 +10,5 @@ body { background-color: #888; }
 #login-main form { padding: 0 20px  }
 .navbar-brand img {
     margin: -16px 0px -15px -15px;
+    width: 60px;
 }

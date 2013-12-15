@@ -8,31 +8,49 @@
   <link href="{% static "css/noticole.css" %}" rel="stylesheet">
 {% endblock %}
 
+{% block extra_script %}
+<script type="text/javascript">
+(function($) {
+  $('.accion input').change(function() {
+      $(this).prop('disabled', true);
+      $(this).parents('.alert').animate({'background-color': '#ddd', opacity: .6}
+      ).on('mouseenter', function() {
+        $(this).animate({opacity: .9});
+      }).on('mouseleave', function() {
+        $(this).animate({opacity: .5});
+      });
+  });
+})(jQuery);
+</script>
+{% endblock %}
 {% block body %}
 <div class="row notificaciones-app">
   <div class="span4 offset2">
     <h1>Notificaciones</h1>
     {% for notificacion in object_list %}
-      <div class="row alert{% if notificacion.nivel %} alert-{{ notificacion.nivel }}{% endif %}">
+      <div id="notificacion-{{ notificacion.id }}" class="row alert{% if notificacion.nivel %} alert-{{ notificacion.nivel }}{% endif %}">
         <div class="span5">
           <div class="msg-head">
-          <h4>{{ notificacion.get_tipo_display }}</h4>
-          <strong>{{ notificacion.notificador.get_full_name|default:notificacion.notificador.username }}</strong> | hace {{ notificacion.timestamp|timesince }}
-        </div>
-        <div class="msg-content">
-          <div class="mensaje">{{ notificacion.mensaje|linebreaks }}</div>
-          {% if notificacion.alumno %}
-          <div class="span2 foto-alumno">
-            <img class="img-rounded" alt="{{ notificacion.alumno }}" title="{{ notificacion.alumno }}" src="{% thumbnail notificacion.alumno.foto 100x100 %}" />
+            <h4>{{ notificacion.get_tipo_display }}</h4>
+            <strong>{{ notificacion.notificador.get_full_name|default:notificacion.notificador.username }}</strong> | hace {{ notificacion.timestamp|timesince }}
           </div>
-          {% else %}
-          {% for hijo in request.user.hijos.all %}
-          <div class="span2 foto-alumno-stacked">
-            <img class="img-rounded" alt="{{ hijo }}" title="{{ hijo }}" src="{% thumbnail hijo.foto 100x100 %}" />
+          <div class="msg-content">
+            <div class="mensaje">{{ notificacion.mensaje|linebreaks }}</div>
+            {% if notificacion.alumno %}
+            <div class="span2 foto-alumno">
+              <img class="img-rounded" alt="{{ notificacion.alumno }}" title="{{ notificacion.alumno }}" src="{% thumbnail notificacion.alumno.foto 100x100 %}" />
+            </div>
+            {% else %}
+            {% for hijo in request.user.hijos.all %}
+            <div class="span2 foto-alumno-stacked">
+              <img class="img-rounded" alt="{{ hijo }}" title="{{ hijo }}" src="{% thumbnail hijo.foto 100x100 %}" />
+            </div>
+            {% endfor %}
+            {% endif %}
           </div>
-          {% endfor %}
-          {% endif %}
         </div>
+        <div class="clearfix pull-left accion">
+          Marcar como visto <input data-notificacion="notificacion-{{ notificacion.id }}" type="checkbox">
         </div>
       </div>
     {% endfor %}
